@@ -58,7 +58,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     function getZeto(num) {
-        if(num >= 0 && num < 10) {
+        if (num >= 0 && num < 10) {
             return `0${num}`;
         } else {
             return num;
@@ -90,5 +90,50 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     setClock('.timer', dedline);
+
+    // Modal
+
+    const modal = document.querySelector('.modal'),
+        openModalBtns = document.querySelectorAll('button[data-modal]'),
+        closeModalBtns = document.querySelector('div[data-close]');
+
+    openModalBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal();
+        });
+    });
+
+    modal.addEventListener('click', (e) => {
+        e.preventDefault();
+        if(e.target === modal) {
+            closeModal();
+        }
+    });
+
+    closeModalBtns.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if(e.code === "Escape" && modal.classList.contains('show')) {
+            closeModal();
+        }
+    });
+
+    function openModal() {
+        modal.classList.add('show');
+        modal.classList.add('fade');
+        modal.classList.remove('hide');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modal.classList.remove('fade');
+        modal.classList.remove('show');
+        modal.classList.add('hide');
+        document.body.style.overflow = '';
+    }
 
 });
