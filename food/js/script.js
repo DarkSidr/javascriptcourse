@@ -39,7 +39,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Timer
 
-    const dedline = '2022-03-12';
+    const dedline = '2022-03-31';
 
     function getTimeRemaining(endtime) {
 
@@ -124,16 +124,26 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function openModal() {
         modal.classList.add('show');
-        modal.classList.add('fade');
         modal.classList.remove('hide');
         document.body.style.overflow = 'hidden';
+        clearInterval(modalTimerId);
     }
 
     function closeModal() {
-        modal.classList.remove('fade');
         modal.classList.remove('show');
         modal.classList.add('hide');
         document.body.style.overflow = '';
     }
+
+    const modalTimerId = setTimeout(openModal, 5000);
+
+    function showModalByScroll() {
+        if(window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight - 1) {
+            openModal();
+            window.removeEventListener('scroll', showModalByScroll);
+        }
+    }
+
+    window.addEventListener('scroll', showModalByScroll);
 
 });
