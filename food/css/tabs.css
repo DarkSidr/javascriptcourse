@@ -19,3 +19,7 @@
         opacity: 1;
     }
 }
+
+.menu__item {
+    min-height:  490px;
+}
