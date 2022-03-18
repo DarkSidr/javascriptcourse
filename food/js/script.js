@@ -168,9 +168,9 @@ window.addEventListener('DOMContentLoaded', () => {
             }
 
             menuItem.innerHTML = ` 
-                <img src=${this.img} alt=${this.alt}>
-                <h3 class="menu__item-subtitle">${this.name}</h3>
-                <div class="menu__item-descr">${this.text}</div>
+                <img src=${this.img} alt=${this.altimg}>
+                <h3 class="menu__item-subtitle">${this.title}</h3>
+                <div class="menu__item-descr">${this.descr}</div>
                 <div class="menu__item-divider"></div>
                 <div class="menu__item-price">
                     <div class="menu__item-cost">Цена:</div>
@@ -196,6 +196,15 @@ window.addEventListener('DOMContentLoaded', () => {
                 new ProductCard(img, altimg, title, descr, price, '.menu .container').render();
             });
         });
+
+    // axios.get('http://localhost:3000/menu')
+    //     .then(data => {
+    //         data.data.forEach(({img, altimg, title, descr, price}) => {
+    //             new ProductCard(img, altimg, title, descr, price, '.menu .container').render();
+    //         });
+    //     });
+    
+    // axios.get('http://localhost:3000/menu').then(data => console.log(data));
 
     // getResource('http://localhost:3000/menu').then(data => createCard(data));
 
