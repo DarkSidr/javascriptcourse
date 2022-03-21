@@ -1,7 +1,7 @@
-function timer() {
+function timer(id, deadline) {
     // Timer
 
-    const dedline = '2022-03-31';
+    // const dedline = '2022-03-31';
 
     function getTimeRemaining(endtime) {
 
@@ -51,7 +51,7 @@ function timer() {
         }
     }
 
-    setClock('.timer', dedline);
+    setClock(id, deadline);
 }
 
-module.exports = timer;
+export default timer;
